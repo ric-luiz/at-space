@@ -55,7 +55,7 @@ function Spritesheet(ctx,img,linhas,colunas){
 				var larguraQuadro = this.img.width/this.numColunas;
 				var alturaQuadro = this.img.height/this.numLinhas;
 				var rotacao = nave.rotacaoPosicao(nave.rotacao);
-				console.log(rotacao);
+								
 				this.context.save();
 
 				// translate contexto para centro da imagem
