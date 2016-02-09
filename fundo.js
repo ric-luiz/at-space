@@ -3,31 +3,33 @@ function Fundo (ctx,img,teclado,nave) {
 	this.img = img;
 	this.nave = nave;
 	this.velocidade = 0;
+	this.aceleracao = 0;
 	this.x = 0;
 	this.y = 0;
 	this.teclado = teclado;
 }
 Fundo.prototype = {
 	atualizar: function() {
-		//Atualizar a possicao do fundo
-		var incremento = this.velocidade * this.animacao.decorrido/1000;
+		//Define o incremento que ira definir a posição no mapa
+		var incremento = this.aceleracao * this.animacao.decorrido/1000;
 
-		// if(this.teclado.pressionada(SETA_ESQUERDA)){
-		// 	this.x -= incremento;
-		// }
-		//
-		// if(this.teclado.pressionada(SETA_DIREITA)){
-		// 	this.x += incremento;
-		// }
-		//
+		//Faz a nave andar ao aperta a seta para cima
 		if(this.teclado.pressionada(SETA_CIMA)){
+			//Acelera a nave
+			this.acelerar();
+			//Define a posição
 			this.rotacaoPosicao(this.nave.rotacao,incremento);
 		}
-		//
-		// if(this.teclado.pressionada(SETA_BAIXO)){
-		// 	this.y += incremento;
-		// }
 
+		//Faz a nave parar ao solta a seta para cima
+		if(!this.teclado.pressionada(SETA_CIMA)){
+			//Desacelera a nave
+			this.desacelerar();
+			//Define a posição
+			this.rotacaoPosicao(this.nave.rotacao,incremento);
+		}
+
+		//Definindo o loop da imagem do mapa
 		if(this.y < 0){
 			 this.y = 500;
 		}
@@ -51,6 +53,25 @@ Fundo.prototype = {
 		);
 
 	},
+	//acelerar a nave baseada na velocidade
+	acelerar: function() {
+		if(this.aceleracao == 0){
+			this.aceleracao = this.velocidade/4;
+		}
+
+		if(this.aceleracao < this.velocidade){
+			this.aceleracao += 2;
+		}
+	},
+	//desacelear a nave ate ela chegar a 0
+	desacelerar: function() {
+		if(this.aceleracao > 0){
+			this.aceleracao -= 4;
+		} else {
+			this.aceleracao = 0;
+		}
+	},
+	//Definindo a posicao da nava e a direção dela
 	rotacaoPosicao: function(rotacao,incremento) {
 		if (rotacao >= 0){
 			if((rotacao > 345 && rotacao <= 360) || (rotacao >= 0 && rotacao <= 15) ){

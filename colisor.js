@@ -17,7 +17,7 @@ Colisor.prototype = {
 				if(i == j) continue;
 
 				// this.testarColisao(this.sprites[i],this.sprites[j]);
-				
+
 				//Gerar string unicas para os objetos
 				var id1 = this.stringUnica(this.sprites[i]);
 				var id2 = this.stringUnica(this.sprites[j]);
@@ -25,7 +25,7 @@ Colisor.prototype = {
 				//Criar os arrays se n existirem
 				if(!jaTestados[id1]) jaTestados[id1]=[];
 				if(!jaTestados[id2]) jaTestados[id2]=[];
-				
+
 				//Teste de repetição
 				if(!(jaTestados[id1].indexOf(id2) >= 0 ||
 					 jaTestados[id2].indexOf(id1) >= 0)){
@@ -36,7 +36,7 @@ Colisor.prototype = {
 					//Registrar o teste
 					jaTestados[id1].push(id2);
 					jaTestados[id2].push(id1);
-				}		
+				}
 			}
 		}
 

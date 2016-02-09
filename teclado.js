@@ -18,7 +18,7 @@ function Teclado(elemento){
 	this.disparadas=[];
 
 	//funcões de pulo
-	this.funcoesPulo=[];
+	// this.funcoesPulo=[];
 
 	//Funções de disparo
 	this.funcoesDisparo=[];
@@ -36,6 +36,7 @@ function Teclado(elemento){
 			teclado.funcoesDisparo[tecla]();
 		}
 	});
+
 	elemento.addEventListener('keyup',function(evento){
 		teclado.pressionadas[evento.keyCode] = false;
 		teclado.disparadas[evento.keyCode] = false;
@@ -44,7 +45,7 @@ function Teclado(elemento){
 
 Teclado.prototype = {
 	pressionada: function(tecla){
-		return this.pressionadas[tecla]
+		return this.pressionadas[tecla];
 	},
 	disparou: function(tecla, callback){
 		this.funcoesDisparo[tecla]=callback;
