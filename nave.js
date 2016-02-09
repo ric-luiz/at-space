@@ -4,7 +4,7 @@ function Nave(ctx,teclado,img,imgExplosao) {
 	this.img = img;
 	this.x = 0;
 	this.y = 0;
-	this.velocidade = 2;
+	this.velocidade = 30;
 	this.acabaramVidas = null;
 	this.vidasExtras = 3;
 	this.atingido = 0;
@@ -35,7 +35,7 @@ Nave.prototype = {
 			this.spritesheet.linha = 0;
 
 		//Reiniciando o angulo da rotação para 0 caso ela seja maior que 360 ou -360
-		if(Math.abs(this.rotacao) > 360){
+		if(Math.abs(this.rotacao) >= 347){
 			this.rotacao = 0;
 		}
 
@@ -45,7 +45,7 @@ Nave.prototype = {
 	atirar: function() {
 		var t = new Tiro(this.ctx,this);
 		this.animacao.novoSprite(t);
-		this.colisor.novoSprite(t);
+		// this.colisor.novoSprite(t);
 	},
 	retangulosColisao: function() {
 		var rets = [ {x: this.x+2, y: this.y+19, largura: 9, altura: 13},

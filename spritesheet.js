@@ -24,10 +24,10 @@ function Spritesheet(ctx,img,linhas,colunas){
 						this.coluna++;
 				}
 				else{
-						this.coluna = 0;
+					this.coluna = 0;
 
-						//Avisar que acabou o ciclo
-						if (this.fimDoCiclo) this.fimDoCiclo();
+					//Avisar que acabou o ciclo
+					if (this.fimDoCiclo) this.fimDoCiclo();
 				}
 
 				//guardar ultima mudança
@@ -55,7 +55,7 @@ function Spritesheet(ctx,img,linhas,colunas){
 				var larguraQuadro = this.img.width/this.numColunas;
 				var alturaQuadro = this.img.height/this.numLinhas;
 				var rotacao = nave.rotacaoPosicao(nave.rotacao);
-
+				console.log(rotacao);
 				this.context.save();
 
 				// translate contexto para centro da imagem
