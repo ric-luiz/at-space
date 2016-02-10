@@ -15,8 +15,9 @@ Fundo.prototype = {
 
 		//Faz a nave andar ao aperta a seta para cima
 		if(this.teclado.pressionada(SETA_CIMA)){
-			//Acelera a nave
+			//Acelera a nave... Quer dizer o fundo (já que ele é em quem se move né :) )
 			this.acelerar();
+
 			//Define a posição
 			this.rotacaoPosicao(this.nave.rotacao,incremento);
 		}
@@ -76,70 +77,141 @@ Fundo.prototype = {
 		if (rotacao >= 0){
 			if((rotacao > 345 && rotacao <= 360) || (rotacao >= 0 && rotacao <= 15) ){
 				this.y -= incremento;
+
+				//Definindo a Longitude e Latitude da nave x,y
+				this.nave.longitudeLatitude(0,-incremento);
+
 			} else if (rotacao > 15 && rotacao <= 45) {
 				this.y -= incremento;
 				this.x += incremento/2;
+
+				this.nave.longitudeLatitude(incremento/2,-incremento);
+
 			} else if (rotacao > 45 && rotacao <= 75) {
 				this.y -= incremento/2;
 				this.x += incremento;
+
+				this.nave.longitudeLatitude(incremento,-incremento/2);
+
 			} else if (rotacao > 75 && rotacao <= 105) {
 				this.x += incremento;
+
+				this.nave.longitudeLatitude(incremento,0);
+
 			} else if (rotacao > 105 && rotacao <= 135) {
 				this.y += incremento/2;
 				this.x += incremento;
+
+				this.nave.longitudeLatitude(incremento,incremento/2);
+
 			} else if (rotacao > 135 && rotacao <= 165) {
 				this.y += incremento;
 				this.x += incremento/2;
+
+				this.nave.longitudeLatitude(incremento/2,incremento);
+
 			} else if (rotacao > 165 && rotacao <= 195) {
 				this.y += incremento;
+
+				this.nave.longitudeLatitude(0,incremento);
+
 			} else if (rotacao > 195 && rotacao <= 225) {
 				this.y += incremento;
 				this.x -= incremento/2;
+
+				this.nave.longitudeLatitude(-incremento/2,incremento);
+
 			} else if (rotacao > 225 && rotacao <= 255) {
 				this.y += incremento/2;
 				this.x -= incremento;
+
+				this.nave.longitudeLatitude(-incremento,incremento/2);
+
 			} else if (rotacao > 255 && rotacao <= 285) {
 				this.x -= incremento;
+
+				this.nave.longitudeLatitude(-incremento,0);
+
 			} else if (rotacao > 285 && rotacao <= 315) {
 				this.y -= incremento/2;
 				this.x -= incremento;
+
+				this.nave.longitudeLatitude(-incremento,-incremento/2);
+
 			} else if (rotacao > 315 && rotacao <= 345) {
 				this.y -= incremento;
 				this.x -= incremento/2;
+
+				this.nave.longitudeLatitude(-incremento/2,-incremento);
 			}
 		} else {
 			if((rotacao < -345 && rotacao >= -360) || (rotacao <= 0 && rotacao >= -15) ){
 				this.y -= incremento;
 				this.x -= incremento/2;
+
+				this.nave.longitudeLatitude(-incremento/2,-incremento);
+
 			} else if (rotacao < -15 && rotacao >= -45) {
 				this.y -= incremento/2;
 				this.x -= incremento;
+
+				this.nave.longitudeLatitude(-incremento,-incremento/2);
+
 			} else if (rotacao < -45 && rotacao >= -75) {
 				this.x -= incremento;
+
+				this.nave.longitudeLatitude(-incremento,0);
+
 			} else if (rotacao < -75 && rotacao >= -105) {
 				this.y += incremento/2;
 				this.x -= incremento;
+
+				this.nave.longitudeLatitude(-incremento,incremento/2);
+
 			} else if (rotacao < -105 && rotacao >= -135) {
 				this.y += incremento;
 				this.x -= incremento/2;
+
+				this.nave.longitudeLatitude(-incremento/2,incremento);
+
 			} else if (rotacao < -135 && rotacao >= -165) {
 				this.y += incremento;
+
+				this.nave.longitudeLatitude(0,incremento);
+
 			} else if (rotacao < -165 && rotacao >= -195) {
 				this.y += incremento;
 				this.x += incremento/2;
+
+				this.nave.longitudeLatitude(incremento/2,incremento);
+
 			} else if (rotacao < -195 && rotacao >= -225) {
 				this.y += incremento/2;
 				this.x += incremento;
+
+				this.nave.longitudeLatitude(incremento,incremento/2);
+
 			} else if (rotacao < -225 && rotacao >= -255) {
 				this.x += incremento;
+
+				this.nave.longitudeLatitude(incremento,0);
+
 			} else if (rotacao < -255 && rotacao >= -285) {
 				this.y -= incremento/2;
 				this.x += incremento;
+
+				this.nave.longitudeLatitude(incremento,-incremento/2);
+
 			} else if (rotacao < -285 && rotacao >= -315) {
 				this.y -= incremento;
 				this.x += incremento/2;
+
+				this.nave.longitudeLatitude(incremento/2,-incremento);
+
 			} else if (rotacao < -315 && rotacao >= -345) {
 				this.y -= incremento;
+
+				this.nave.longitudeLatitude(0,-incremento);				
 			}
 		}
 	}

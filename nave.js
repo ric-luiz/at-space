@@ -12,11 +12,20 @@ function Nave(ctx,teclado,img,imgExplosao) {
 	this.spritesheet.linha = 0;
 	this.spritesheet.intervalo = 100;
 	this.imgExplosao = imgExplosao;
+
+	//Rotação da nave
 	this.rotacao = 0;
+
+	//Latitude e Longitude
+	this.eixoX = 0;
+	this.eixoY = 0;
+	this.latitude = 0; //Horizontal
+	this.longitude = 0; //vertical
 }
 Nave.prototype = {
 	atualizar: function() {
 
+		console.log("Latitude: "+this.latitude + " Longitude: " + this.longitude);
 		var incremento = this.velocidade * this.animacao.decorrido/1000;
 
 		if(this.teclado.pressionada(SETA_ESQUERDA))
@@ -46,6 +55,19 @@ Nave.prototype = {
 		var t = new Tiro(this.ctx,this);
 		this.animacao.novoSprite(t);
 		// this.colisor.novoSprite(t);
+	},
+	//Definindo o posicionamento da nave. Latitude e Longitude
+	longitudeLatitude: function(incrementoX,incrementoY) {
+		this.eixoX += incrementoX;
+		this.eixoY += incrementoY;
+
+		if(Math.abs(this.eixoX) > 1000){
+			this.latitude = parseInt((this.eixoX)/1000);
+		}
+
+		if(Math.abs(this.eixoY) > 1000){
+			this.longitude = parseInt((this.eixoY)/1000);
+		}
 	},
 	retangulosColisao: function() {
 		var rets = [ {x: this.x+2, y: this.y+19, largura: 9, altura: 13},

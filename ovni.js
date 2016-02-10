@@ -14,7 +14,7 @@ Ovni.prototype = {
 		//Excluir quando sumir da tela
 		if(this.y > this.ctx.canvas.height){
 			this.animacao.excluirSprite(this);
-			this.colisor.excluirSprite(this);
+			// this.colisor.excluirSprite(this);
 		}
 	},
 	desenhar: function() {
